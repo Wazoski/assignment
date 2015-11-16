@@ -66,7 +66,8 @@ public class MiniCPrintListener implements MiniCListener{
 
 	@Override
 	public void exitDecl(DeclContext ctx) {
-		/* dcl_specifiers 노드에 preorder로 처리할 부분: 비어있다 */
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
