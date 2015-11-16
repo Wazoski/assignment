@@ -1,56 +1,56 @@
 grammar MiniC;
 
-program		: decl+			{System.out.println("Rule 0");};
-decl		: var_decl		{System.out.println("Rule 1-1");}
-		| fun_decl		{System.out.println("Rule 1-2");};
-var_decl	: type_spec IDENT  ';'	{System.out.println("Rule 2-1");}
-		| type_spec IDENT '[' ']' ';'	{System.out.println("Rule 2-2");};
-type_spec	: VOID				{System.out.println("Rule 3-1");}
-		| INT				{System.out.println("Rule 3-2");};
-fun_decl	: type_spec IDENT '(' params ')' compound_stmt {System.out.println("Rule 4-1");};
-params		: param ('+' param)*		{System.out.println("Rule 5-1");}
-		| VOID				{System.out.println("Rule 5-2");};
-param		: type_spec IDENT		{System.out.println("Rule 6-1");}
-		| type_spec IDENT '[' ']'	{System.out.println("Rule 6-2");};
-stmt		: expr_stmt			{System.out.println("Rule 7-1");}
-		| compound_stmt			{System.out.println("Rule 7-2");}
-		| if_stmt			{System.out.println("Rule 7-3");}
-		| while_stmt			{System.out.println("Rule 7-4");}
-		| return_stmt			{System.out.println("Rule 7-5");};
-expr_stmt	: expr ';'			{System.out.println("Rule 8-1");};
-while_stmt	: WHILE '(' expr ')' stmt	{System.out.println("Rule 9-1");};
-compound_stmt: '{' local_decl* stmt* '}'	{System.out.println("Rule 10-1");};
-local_decl	: type_spec IDENT ';'		{System.out.println("Rule 11-1");}
-		| type_spec IDENT '[' ']' ';'	{System.out.println("Rule 11-2");};
-if_stmt		: IF '(' expr ')' stmt		{System.out.println("Rule 12-1");}
-		| IF '(' expr ')' stmt ELSE stmt {System.out.println("Rule 12-2");};
-return_stmt	: RETURN ';'			{System.out.println("Rule 13-1");}
-		| RETURN expr ';'		{System.out.println("Rule 13-2");};
+program		: decl+;
+decl		: var_decl
+		| fun_decl;
+var_decl	: type_spec IDENT  ';'
+		| type_spec IDENT '[' ']' ';';
+type_spec	: VOID
+		| INT;
+fun_decl	: type_spec IDENT '(' params ')' compound_stmt;
+params		: param ('+' param)*
+		| VOID;
+param		: type_spec IDENT
+		| type_spec IDENT '[' ']';
+stmt		: expr_stmt
+		| compound_stmt
+		| if_stmt
+		| while_stmt
+		| return_stmt;
+expr_stmt	: expr ';';
+while_stmt	: WHILE '(' expr ')' stmt;
+compound_stmt: '{' local_decl* stmt* '}';
+local_decl	: type_spec IDENT ';'
+		| type_spec IDENT '[' ']' ';';
+if_stmt		: IF '(' expr ')' stmt
+		| IF '(' expr ')' stmt ELSE stmt;
+return_stmt	: RETURN ';'
+		| RETURN expr ';';
 
-expr	: IDENT '=' expr			{System.out.println("Rule 14-1");}
-	| IDENT '[' expr ']' '=' expr		{System.out.println("Rule 14-2");}
-	| expr OR expr				{System.out.println("Rule 14-3");}
-	| expr EQ expr				{System.out.println("Rule 14-4");}
-	| expr NE expr				{System.out.println("Rule 14-5");} 
-	| expr LE expr				{System.out.println("Rule 14-6");} 
-	| expr '<' expr				{System.out.println("Rule 14-7");} 
-	| expr GE expr				{System.out.println("Rule 14-8");} 
-	| expr '>' expr				{System.out.println("Rule 14-9");} 
-	| expr AND expr				{System.out.println("Rule 14-10");} 
-	| expr '+' expr				{System.out.println("Rule 14-11");} 
-	| expr '-' expr				{System.out.println("Rule 14-12");} 
-	| expr '*' expr				{System.out.println("Rule 14-13");} 
-	| expr '/' expr				{System.out.println("Rule 14-14");} 
-	| expr '%' expr				{System.out.println("Rule 14-15");} 
-	| '!' expr				{System.out.println("Rule 14-16");} 
-	| '-' expr				{System.out.println("Rule 14-17");} 
-	| '+' expr				{System.out.println("Rule 14-18");} 
-	| '(' expr ')'				{System.out.println("Rule 14-19");} 
-	| IDENT					{System.out.println("Rule 14-20");} 
-	| IDENT '[' expr ']'			{System.out.println("Rule 14-21");} 
-	| LITERAL				{System.out.println("Rule 14-22");} ;
-args	: expr (',' expr)*			{System.out.println("Rule 15-1");} 
-	|					{System.out.println("Rule 15-2");} ;
+expr	: IDENT '=' expr
+	| IDENT '[' expr ']' '=' expr
+	| expr OR expr
+	| expr EQ expr
+	| expr NE expr 
+	| expr LE expr 
+	| expr '<' expr 
+	| expr GE expr 
+	| expr '>' expr 
+	| expr AND expr 
+	| expr '+' expr 
+	| expr '-' expr 
+	| expr '*' expr 
+	| expr '/' expr 
+	| expr '%' expr 
+	| '!' expr 
+	| '-' expr 
+	| '+' expr 
+	| '(' expr ')' 
+	| IDENT 
+	| IDENT '[' expr ']' 
+	| LITERAL;
+args	: expr (',' expr)*
+	|;
 
 VOID: 'void';
 INT: 'int';
