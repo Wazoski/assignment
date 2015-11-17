@@ -95,10 +95,15 @@ public class MiniCPrintListener extends MiniCBaseListener {
 	public void exitCompound_stmt(MiniCParser.Compound_stmtContext ctx) {
 		int count = ctx.getChildCount();
 		String tmp = "";
-		String y = ctx.getParent().getParent().getChild(0).getText();
-		//System.out.println(y);
-
-		if (y.equals("while")) {
+		String x = ctx.getText();
+		String y = ctx.getParent().getParent().getText();
+		String z = ctx.getChild(0).getText();
+		String w = ctx.getParent().getParent().getChild(0).getText();
+		System.out.println(x);
+		System.out.println(y);
+		System.out.println(z);
+		System.out.println(w);
+		if (x.equals("while")) {
 			for (int i = 0; i < count; i++) {
 				if (i == 0) {
 					tmp = "    {\n";
@@ -108,7 +113,7 @@ public class MiniCPrintListener extends MiniCBaseListener {
 					tmp += "        " + newTexts.get(ctx.getChild(i)) + "\n";
 				}
 			}
-		} else if (y.equals("if")) {
+		} else if (x.equals("if")) {
 			for (int i = 0; i < count; i++) {
 				if (i == 0) {
 					tmp = "        {\n";
