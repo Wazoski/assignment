@@ -148,7 +148,7 @@ public class MiniCPrintListener extends MiniCBaseListener {
 			newTexts.put(ctx, ctx.getText());
 		}else if(count==4){
 			String tmp = "";
-			tmp += newTexts.get(ctx.getChild(0)) + " (" + newTexts.get(ctx.getChild(2)) + ")";
+			tmp += newTexts.get(ctx.getChild(0)) + " (" + ctx.getChild(2) + ")";
 			newTexts.put(ctx, tmp);
 		}
 	}
