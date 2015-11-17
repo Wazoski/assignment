@@ -95,6 +95,9 @@ public class MiniCPrintListener extends MiniCBaseListener {
 	public void exitCompound_stmt(MiniCParser.Compound_stmtContext ctx) {
 		int count = ctx.getChildCount();
 		String tmp = "";
+		String y = ctx.getText();
+		String a = ctx.getChild(0).getText();
+		String x = ctx.getParent().getChild(0).getText();
 		if (x.equals("while")) {
 			for (int i = 0; i < count; i++) {
 				if (i == 0) {
@@ -168,11 +171,11 @@ public class MiniCPrintListener extends MiniCBaseListener {
 		int count = ctx.getChildCount();
 		if (isBinaryOperation(ctx)) {
 			s1 = newTexts.get(ctx.getChild(0));
-			if(s1 == null){
-				s1 = ctx.getChild(0).getText();
-			}
 			s2 = newTexts.get(ctx.getChild(2));
 			op = ctx.getChild(1).getText();
+			if(ctx.getChild(0).getChildCount() == 1){
+				s1 = ctx..getText();
+			}
 			// System.out.println(s1 + " " + op + " " + s2);
 			newTexts.put(ctx, s1 + " " + op + " " + s2);
 		} else if (count == 3) {
@@ -184,7 +187,7 @@ public class MiniCPrintListener extends MiniCBaseListener {
 			newTexts.put(ctx, ctx.getText());
 		} else if (count == 4) {
 			String tmp = "";
-			tmp += ctx.getChild(0).getText() + " (" + newTexts.get(ctx.getChild(2)) + ")";
+			tmp += newTexts.get(ctx.getChild(0)) + " (" + newTexts.get(ctx.getChild(2)) + ")";
 			newTexts.put(ctx, tmp);
 		}
 	}
