@@ -1,0 +1,240 @@
+package main;
+import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.misc.NotNull;
+import org.antlr.v4.runtime.tree.ErrorNode;
+import org.antlr.v4.runtime.tree.TerminalNode;
+
+import main.MiniCParser.ArgsContext;
+import main.MiniCParser.Compound_stmtContext;
+import main.MiniCParser.DeclContext;
+import main.MiniCParser.ExprContext;
+import main.MiniCParser.Expr_stmtContext;
+import main.MiniCParser.Fun_declContext;
+import main.MiniCParser.If_stmtContext;
+import main.MiniCParser.Local_declContext;
+import main.MiniCParser.ParamContext;
+import main.MiniCParser.ParamsContext;
+import main.MiniCParser.ProgramContext;
+import main.MiniCParser.Return_stmtContext;
+import main.MiniCParser.StmtContext;
+import main.MiniCParser.Type_specContext;
+import main.MiniCParser.Var_declContext;
+import main.MiniCParser.While_stmtContext;
+public class MiniCPrintListener extends MiniCBaseListener{
+
+	@Override
+	public void enterEveryRule(ParserRuleContext arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void exitEveryRule(ParserRuleContext arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visitErrorNode(ErrorNode arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visitTerminal(TerminalNode arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enterWhile_stmt(While_stmtContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void exitWhile_stmt(While_stmtContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enterDecl(DeclContext ctx) {
+		/* decl 노드에 preorder로 처리할 부분: 비어있다 */
+		
+	}
+
+	@Override
+	public void exitDecl(DeclContext ctx) {
+		/* dcl_specifiers 노드에 preorder로 처리할 부분: 비어있다 */
+	}
+
+	@Override
+	public void enterFun_decl(Fun_declContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void exitFun_decl(Fun_declContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enterIf_stmt(If_stmtContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void exitIf_stmt(If_stmtContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enterProgram(ProgramContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void exitProgram(ProgramContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enterParams(ParamsContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void exitParams(ParamsContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enterExpr_stmt(Expr_stmtContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void exitExpr_stmt(Expr_stmtContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enterCompound_stmt(Compound_stmtContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void exitCompound_stmt(Compound_stmtContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enterArgs(ArgsContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void exitArgs(ArgsContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enterLocal_decl(Local_declContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void exitLocal_decl(Local_declContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enterType_spec(Type_specContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void exitType_spec(Type_specContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enterParam(ParamContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void exitParam(ParamContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enterExpr(ExprContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void exitExpr(ExprContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enterVar_decl(Var_declContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void exitVar_decl(Var_declContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enterStmt(StmtContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void exitStmt(StmtContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enterReturn_stmt(Return_stmtContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void exitReturn_stmt(Return_stmtContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

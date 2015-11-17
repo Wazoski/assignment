@@ -7,6 +7,7 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  * This interface defines a complete listener for a parse tree produced by
  * {@link MiniCParser}.
  */
+@SuppressWarnings("deprecation")
 public interface MiniCListener extends ParseTreeListener {
 	/**
 	 * Enter a parse tree produced by {@link MiniCParser#while_stmt}.

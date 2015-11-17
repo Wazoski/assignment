@@ -1,16 +1,16 @@
-int x;
-void test(int a)
-{
-	int k;
-	k = 5;
-	while(a != 7){
-		a = a+1;
-	}
+int func1 (int a,int b){
+    int result;
+    result = 0;
+    while (a> 0){if (a/ b )
+        {result=result+1;}
+        a =a%b;
+    }
+    return result;
+}
 
-	if(x==0){
-		x=1;
-	}
-
-	k = k + a;
-	return k;
+int main(void){
+    int a;int b;int result;
+    a=256;b=2;
+    result= func1 (a,   b);
+    return 0;
 }
