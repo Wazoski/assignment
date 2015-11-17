@@ -31,15 +31,8 @@ public class MiniCPrintListener extends MiniCBaseListener {
 	 */
 	@Override
 	public void enterDecl(MiniCParser.DeclContext ctx) {
+		
 	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
-	 */
 	@Override
 	public void exitDecl(MiniCParser.DeclContext ctx) {
 	}
@@ -88,48 +81,16 @@ public class MiniCPrintListener extends MiniCBaseListener {
 	public void exitIf_stmt(MiniCParser.If_stmtContext ctx) {
 	}
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
-	 */
-	@Override
-	public void enterProgram(MiniCParser.ProgramContext ctx) {
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
-	 */
 	@Override
 	public void exitProgram(MiniCParser.ProgramContext ctx) {
+		String s1 = null;
+		s1 = newTexts.get(ctx);
+		System.out.println(s1);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
-	 */
-	@Override
-	public void enterParams(MiniCParser.ParamsContext ctx) {
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
-	 */
 	@Override
 	public void exitParams(MiniCParser.ParamsContext ctx) {
+		
 	}
 
 	/**
@@ -164,14 +125,7 @@ public class MiniCPrintListener extends MiniCBaseListener {
 	@Override
 	public void enterCompound_stmt(MiniCParser.Compound_stmtContext ctx) {
 	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
-	 */
+	
 	@Override
 	public void exitCompound_stmt(MiniCParser.Compound_stmtContext ctx) {
 	}
@@ -198,57 +152,15 @@ public class MiniCPrintListener extends MiniCBaseListener {
 	public void exitArgs(MiniCParser.ArgsContext ctx) {
 	}
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
-	 */
-	@Override
-	public void enterLocal_decl(MiniCParser.Local_declContext ctx) {
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
-	 */
 	@Override
 	public void exitLocal_decl(MiniCParser.Local_declContext ctx) {
 	}
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
-	 */
-	@Override
-	public void enterType_spec(MiniCParser.Type_specContext ctx) {
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
-	 */
 	@Override
 	public void exitType_spec(MiniCParser.Type_specContext ctx) {
+		System.out.println(ctx.getText());
+		newTexts.put(ctx,ctx.getText());
 	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The default implementation does nothing.
-	 * </p>
-	 */
 	@Override
 	public void enterParam(MiniCParser.ParamContext ctx) {
 	}
