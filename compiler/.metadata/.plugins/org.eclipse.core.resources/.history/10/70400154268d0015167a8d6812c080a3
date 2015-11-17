@@ -144,8 +144,6 @@ public class MiniCPrintListener extends MiniCBaseListener {
 		}else if(count==1){
 		
 			newTexts.put(ctx, ctx.getText());
-		}else if(count==4){
-			
 		}
 	}
 

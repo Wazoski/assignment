@@ -51,7 +51,7 @@ public class MiniCPrintListener extends MiniCBaseListener {
 		for(int i =0;i<count;i++){
 			tmp+=newTexts.get(ctx.getChild(i))+"\n\n";
 		}
-		System.out.println(tmp);
+		System.out.println("\n"+tmp);
 	}
 
 	@Override
@@ -132,20 +132,13 @@ public class MiniCPrintListener extends MiniCBaseListener {
 	@Override
 	public void exitExpr(MiniCParser.ExprContext ctx) {
 		String s1 = null, s2 = null, op = null;
-		int count = ctx.getChildCount();
+		
 		if (isBinaryOperation(ctx)) {
 			s1 = newTexts.get(ctx.getChild(0));
 			s2 = newTexts.get(ctx.getChild(2));
 			op = ctx.getChild(1).getText();
-			System.out.println(s1 + " " + op + " " + s2);
+			// System.out.println(s1 + " " + op + " " + s2);
 			newTexts.put(ctx, s1 + " " + op + " " + s2);
-		}else if(count==3){
-			
-		}else if(count==1){
-		
-			newTexts.put(ctx, ctx.getText());
-		}else if(count==4){
-			
 		}
 	}
 

@@ -33,10 +33,9 @@ public class MiniCPrintListener extends MiniCBaseListener {
 		s[3] = newTexts.get(ctx.getChild(3));
 		s[4] = ctx.getChild(4).getText();
 		s[5] = newTexts.get(ctx.getChild(5));
-		
-		
-		//System.out.println(s[0] + " " + s[1] + " " + s[2] + s[3] + s[4] +"\n" + s[5]);
-		newTexts.put(ctx, s[0] + " " + s[1] + " " + s[2] + s[3] + s[4] + "\n" + s[5]);
+
+		System.out.println(s[0] + "" + s[1] + " " + s[2] + s[3] + s[4] +"\n" + s[5]);
+		newTexts.put(ctx, s[0] + "" + s[1] + " " + s[2] + s[3] + s[4] + "\n" + s[5]);
 	}
 
 	@Override
@@ -51,7 +50,7 @@ public class MiniCPrintListener extends MiniCBaseListener {
 		for(int i =0;i<count;i++){
 			tmp+=newTexts.get(ctx.getChild(i))+"\n\n";
 		}
-		System.out.println(tmp);
+		//System.out.println(tmp);
 	}
 
 	@Override
@@ -87,13 +86,13 @@ public class MiniCPrintListener extends MiniCBaseListener {
 		String tmp = "";
 		for (int i = 0; i < count; i++) {
 			if (i == 0){
-				tmp = "{\n";
+				tmp = "{";
 			}
 			else if (i == count - 1){
 				tmp += "}";
 			}
 			else{
-				tmp += "    "+newTexts.get(ctx.getChild(i))+"\n";
+				tmp += newTexts.get(ctx.getChild(i))+"\n";
 			}
 		}
 		newTexts.put(ctx, tmp);
@@ -107,14 +106,14 @@ public class MiniCPrintListener extends MiniCBaseListener {
 	@Override
 	public void exitLocal_decl(MiniCParser.Local_declContext ctx) {
 		String tmp = "";
-		tmp += newTexts.get(ctx.getChild(0)) + " "+ctx.getChild(1).getText() + ";";
+		tmp += newTexts.get(ctx.getChild(0)) + ctx.getChild(1).getText() + ";";
 		newTexts.put(ctx, tmp);
 	}
 
 	@Override
 	public void exitType_spec(MiniCParser.Type_specContext ctx) {
-		//System.out.println(ctx.getText());
-		newTexts.put(ctx, ctx.getText());
+		// System.out.println(ctx.getText() + " ");
+		newTexts.put(ctx, ctx.getText() + " ");
 	}
 
 	@Override
@@ -125,27 +124,19 @@ public class MiniCPrintListener extends MiniCBaseListener {
 			s[0] = newTexts.get(ctx.getChild(0));
 			s[1] = ctx.getChild(1).getText();
 			// System.out.println(s[0]+" "+s[1]);
-			newTexts.put(ctx, s[0] + " " + s[1]);
+			newTexts.put(ctx, s[0] + "" + s[1]);
 		}
 	}
 
 	@Override
 	public void exitExpr(MiniCParser.ExprContext ctx) {
 		String s1 = null, s2 = null, op = null;
-		int count = ctx.getChildCount();
 		if (isBinaryOperation(ctx)) {
-			s1 = newTexts.get(ctx.getChild(0));
-			s2 = newTexts.get(ctx.getChild(2));
+			s1 = newTexts.get(ctx.expr(0));
+			s2 = newTexts.get(ctx.expr(1));
 			op = ctx.getChild(1).getText();
-			System.out.println(s1 + " " + op + " " + s2);
+			// System.out.println(s1 + " " + op + " " + s2);
 			newTexts.put(ctx, s1 + " " + op + " " + s2);
-		}else if(count==3){
-			
-		}else if(count==1){
-		
-			newTexts.put(ctx, ctx.getText());
-		}else if(count==4){
-			
 		}
 	}
 
