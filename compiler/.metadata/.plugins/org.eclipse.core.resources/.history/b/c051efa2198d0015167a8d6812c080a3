@@ -22,19 +22,14 @@ public class MiniCPrintListener extends MiniCBaseListener {
 	public void exitDecl(MiniCParser.DeclContext ctx) {
 		int count = ctx.getChildCount();
 		if (count == 5) {
-			
+			String[] s = new String[5];
+			for (int i = 0; i < s.length; i++) {
+
+			}
 		} else if (count == 3) {
 
 		} else if (count == 6) {
-			String[] s = new String[6];
-			s[0] = newTexts.get(ctx.getChild(0));
-			s[1] = ctx.getChild(1).getText();
-			s[2] = ctx.getChild(2).getText();
-			s[3] = newTexts.get(ctx.getChild(3));
-			s[4] = ctx.getChild(4).getText();
-			s[5] = newTexts.get(ctx.getChild(5));
-			
-			newTexts.put(ctx, s[0]+" "+s[1]+" "+s[2]+s[3]+s[4]+"\n"+s[5]);
+
 		}
 	}
 
@@ -57,12 +52,7 @@ public class MiniCPrintListener extends MiniCBaseListener {
 
 	@Override
 	public void exitParams(MiniCParser.ParamsContext ctx) {
-		int count = ctx.getChildCount();
-		if(count==1){
-			newTexts.put(ctx, ctx.getText());
-		}else{
-			
-		}
+
 	}
 
 	@Override

@@ -57,12 +57,7 @@ public class MiniCPrintListener extends MiniCBaseListener {
 
 	@Override
 	public void exitParams(MiniCParser.ParamsContext ctx) {
-		int count = ctx.getChildCount();
-		if(count==1){
-			newTexts.put(ctx, ctx.getText());
-		}else{
-			
-		}
+
 	}
 
 	@Override

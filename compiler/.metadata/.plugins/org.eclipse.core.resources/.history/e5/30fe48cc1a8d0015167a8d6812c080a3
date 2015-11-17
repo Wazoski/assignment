@@ -60,8 +60,6 @@ public class MiniCPrintListener extends MiniCBaseListener {
 		int count = ctx.getChildCount();
 		if(count==1){
 			newTexts.put(ctx, ctx.getText());
-		}else{
-			
 		}
 	}
 
