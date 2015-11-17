@@ -98,7 +98,7 @@ public class MiniCPrintListener extends MiniCBaseListener {
 		String x = ctx.getText();
 		String y = ctx.getParent().getText();
 		String z = ctx.getChild(1).getText();
-		String w = ctx.getParent().getChild(0).getText();
+		String w = ctx.getParent().getChild(0).getChild(1).getText();
 		System.out.println(x);
 		System.out.println(y);
 		System.out.println(z);

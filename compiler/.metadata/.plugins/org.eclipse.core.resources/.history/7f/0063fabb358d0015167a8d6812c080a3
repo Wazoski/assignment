@@ -97,12 +97,8 @@ public class MiniCPrintListener extends MiniCBaseListener {
 		String tmp = "";
 		String x = ctx.getText();
 		String y = ctx.getParent().getText();
-		String z = ctx.getChild(1).getText();
+		String z = ctx.getChild(0).getText();
 		String w = ctx.getParent().getChild(0).getText();
-		System.out.println(x);
-		System.out.println(y);
-		System.out.println(z);
-		System.out.println(w);
 		if (x.equals("while")) {
 			for (int i = 0; i < count; i++) {
 				if (i == 0) {

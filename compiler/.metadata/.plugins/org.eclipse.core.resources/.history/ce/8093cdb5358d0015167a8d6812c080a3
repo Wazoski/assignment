@@ -95,14 +95,7 @@ public class MiniCPrintListener extends MiniCBaseListener {
 	public void exitCompound_stmt(MiniCParser.Compound_stmtContext ctx) {
 		int count = ctx.getChildCount();
 		String tmp = "";
-		String x = ctx.getText();
-		String y = ctx.getParent().getText();
-		String z = ctx.getChild(1).getText();
-		String w = ctx.getParent().getChild(0).getText();
-		System.out.println(x);
-		System.out.println(y);
-		System.out.println(z);
-		System.out.println(w);
+		String x = "";
 		if (x.equals("while")) {
 			for (int i = 0; i < count; i++) {
 				if (i == 0) {
