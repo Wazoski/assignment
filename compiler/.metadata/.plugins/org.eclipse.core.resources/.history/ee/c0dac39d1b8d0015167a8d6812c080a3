@@ -20,83 +20,63 @@ public class MiniCPrintListener extends MiniCBaseListener {
 
 	@Override
 	public void exitDecl(MiniCParser.DeclContext ctx) {
-		System.out.println(newTexts.get(ctx.getChild(0)));
-		newTexts.put(ctx, newTexts.get(ctx.getChild(0)));
+		int count = ctx.getChildCount();
+		if (count == 5) {
+
+		} else if (count == 3) {
+
+		} else if (count == 6) {
+			String[] s = new String[6];
+			s[0] = newTexts.get(ctx.getChild(0));
+			s[1] = ctx.getChild(1).getText();
+			s[2] = ctx.getChild(2).getText();
+			s[3] = newTexts.get(ctx.getChild(3));
+			s[4] = ctx.getChild(4).getText();
+			s[5] = newTexts.get(ctx.getChild(5));
+
+			newTexts.put(ctx, s[0] + " " + s[1] + " " + s[2] + s[3] + s[4] + "\n" + s[5]);
+		}
 	}
 
 	@Override
 	public void exitFun_decl(MiniCParser.Fun_declContext ctx) {
-		String[] s = new String[6];
-		s[0] = newTexts.get(ctx.getChild(0));
-		s[1] = ctx.getChild(1).getText();
-		s[2] = ctx.getChild(2).getText();
-		s[3] = newTexts.get(ctx.getChild(3));
-		s[4] = ctx.getChild(4).getText();
-		s[5] = newTexts.get(ctx.getChild(5));
 
-		// System.out.println(s[0] + " " + s[1] + " " + s[2] + s[3] + s[4] +
-		// "\n" + s[5]);
-		newTexts.put(ctx, s[0] + "" + s[1] + " " + s[2] + s[3] + s[4] + "\n" + s[5]);
 	}
 
 	@Override
 	public void exitIf_stmt(MiniCParser.If_stmtContext ctx) {
-		
+
 	}
 
 	@Override
 	public void exitProgram(MiniCParser.ProgramContext ctx) {
-		int count = ctx.getChildCount();
-		String tmp = "";
-		for(int i =0;i<count;i++){
-			tmp+=newTexts.get(ctx.getChild(i))+"\n\n";
-		}
-		//System.out.println(tmp);
+		String s1 = null;
+		s1 = newTexts.get(ctx);
+		System.out.println(s1);
 	}
 
 	@Override
 	public void exitParams(MiniCParser.ParamsContext ctx) {
 		int count = ctx.getChildCount();
 		if (count == 1) {
-			// System.out.println(ctx.getChild(0).getText());
-			newTexts.put(ctx, ctx.getChild(0).getText());
+			newTexts.put(ctx, ctx.getText());
 		} else {
-			String tmp = "";
+			String tmp;
+			String[] s = new String[count];
 			for (int i = 0; i < count; i++) {
-				if (i % 2 == 0) {
-					tmp += newTexts.get(ctx.getChild(i));
-				} else {
-					tmp += ",";
-				}
+				
 			}
-			// System.out.println(tmp);
-			newTexts.put(ctx, tmp);
 		}
 	}
 
 	@Override
 	public void exitExpr_stmt(MiniCParser.Expr_stmtContext ctx) {
-		String tmp = "";
-		tmp += newTexts.get(ctx.getChild(0)) + ";";
-		newTexts.put(ctx, tmp);
+
 	}
 
 	@Override
 	public void exitCompound_stmt(MiniCParser.Compound_stmtContext ctx) {
-		int count = ctx.getChildCount();
-		String tmp = "";
-		for (int i = 0; i < count; i++) {
-			if (i == 0){
-				tmp = "{";
-			}
-			else if (i == count - 1){
-				tmp += "}";
-			}
-			else{
-				tmp += newTexts.get(ctx.getChild(i))+"\n";
-			}
-		}
-		newTexts.put(ctx, tmp);
+
 	}
 
 	@Override
@@ -106,27 +86,17 @@ public class MiniCPrintListener extends MiniCBaseListener {
 
 	@Override
 	public void exitLocal_decl(MiniCParser.Local_declContext ctx) {
-		String tmp = "";
-		tmp += newTexts.get(ctx.getChild(0)) + ctx.getChild(1).getText() + ";";
-		newTexts.put(ctx, tmp);
+
 	}
 
 	@Override
 	public void exitType_spec(MiniCParser.Type_specContext ctx) {
-		// System.out.println(ctx.getText() + " ");
 		newTexts.put(ctx, ctx.getText() + " ");
 	}
 
 	@Override
 	public void exitParam(MiniCParser.ParamContext ctx) {
-		int count = ctx.getChildCount();
-		if (count == 2) {
-			String[] s = new String[2];
-			s[0] = newTexts.get(ctx.getChild(0));
-			s[1] = ctx.getChild(1).getText();
-			// System.out.println(s[0]+" "+s[1]);
-			newTexts.put(ctx, s[0] + "" + s[1]);
-		}
+
 	}
 
 	@Override
@@ -136,7 +106,6 @@ public class MiniCPrintListener extends MiniCBaseListener {
 			s1 = newTexts.get(ctx.expr(0));
 			s2 = newTexts.get(ctx.expr(1));
 			op = ctx.getChild(1).getText();
-			// System.out.println(s1 + " " + op + " " + s2);
 			newTexts.put(ctx, s1 + " " + op + " " + s2);
 		}
 	}
@@ -148,7 +117,7 @@ public class MiniCPrintListener extends MiniCBaseListener {
 
 	@Override
 	public void exitStmt(MiniCParser.StmtContext ctx) {
-		newTexts.put(ctx, newTexts.get(ctx.getChild(0)));
+
 	}
 
 	@Override

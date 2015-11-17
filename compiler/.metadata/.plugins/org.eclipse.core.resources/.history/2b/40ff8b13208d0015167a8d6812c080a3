@@ -20,7 +20,7 @@ public class MiniCPrintListener extends MiniCBaseListener {
 
 	@Override
 	public void exitDecl(MiniCParser.DeclContext ctx) {
-		System.out.println(newTexts.get(ctx.getChild(0)));
+		// System.out.println(newTexts.get(ctx.getChild(0)));
 		newTexts.put(ctx, newTexts.get(ctx.getChild(0)));
 	}
 
@@ -41,7 +41,7 @@ public class MiniCPrintListener extends MiniCBaseListener {
 
 	@Override
 	public void exitIf_stmt(MiniCParser.If_stmtContext ctx) {
-		
+
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class MiniCPrintListener extends MiniCBaseListener {
 		for(int i =0;i<count;i++){
 			tmp+=newTexts.get(ctx.getChild(i))+"\n\n";
 		}
-		//System.out.println(tmp);
+		System.out.println(tmp);
 	}
 
 	@Override
@@ -76,9 +76,7 @@ public class MiniCPrintListener extends MiniCBaseListener {
 
 	@Override
 	public void exitExpr_stmt(MiniCParser.Expr_stmtContext ctx) {
-		String tmp = "";
-		tmp += newTexts.get(ctx.getChild(0)) + ";";
-		newTexts.put(ctx, tmp);
+		
 	}
 
 	@Override
