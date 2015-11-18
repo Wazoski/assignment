@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="org.antlr.v4.runtime.tree.ParseTreeProperty"/>
+<fullyQualifiedTypeName name="java.lang.NegativeArraySizeException"/>
+<fullyQualifiedTypeName name="main.MiniCParser.While_stmtContext"/>
+<fullyQualifiedTypeName name="main.MiniCParser"/>
 </qualifiedTypeNameHistroy>

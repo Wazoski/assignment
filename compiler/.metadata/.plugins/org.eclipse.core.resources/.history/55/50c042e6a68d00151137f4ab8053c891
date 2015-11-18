@@ -225,18 +225,7 @@ public class MiniCPrintListener extends MiniCBaseListener {
 
 	@Override
 	public void exitVar_decl(MiniCParser.Var_declContext ctx) {
-		int count = ctx.getChildCount();
-		if (count == 3) {
-			String[] s = new String[2];
-			s[0] = newTexts.get(ctx.getChild(0));
-			s[1] = ctx.getChild(1).getText();
-			// System.out.println(s[0]+" "+s[1]);
-			newTexts.put(ctx, s[0] + " " + s[1]+";");
-		} else {
-			String tmp = "";
-			tmp += newTexts.get(ctx.getChild(0)) + " " + ctx.getChild(1).getText() + "[];";
-			newTexts.put(ctx, tmp);
-		}
+
 	}
 
 	@Override

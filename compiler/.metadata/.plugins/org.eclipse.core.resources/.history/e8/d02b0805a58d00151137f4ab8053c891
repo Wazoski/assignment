@@ -1,6 +1,7 @@
 package main;
 
 import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTreeProperty;
 import org.antlr.v4.runtime.tree.TerminalNode;
@@ -25,9 +26,9 @@ public class MiniCPrintListener extends MiniCBaseListener {
 		int count = ctx.getChildCount();
 		String tmp = "";
 		if (count == 3) {
-			tmp += newTexts.get(ctx.getChild(0)) + " " + ctx.getChild(1).getText() + ";";
+			tmp += newTexts.get(ctx.getChild(0)) + ctx.getChild(1).getText() + ";";
 		} else {
-			tmp += newTexts.get(ctx.getChild(0)) + " " + ctx.getChild(1).getText() + "[];";
+			tmp += newTexts.get(ctx.getChild(0)) + ctx.getChild(1).getText() + "[];";
 		}
 		newTexts.put(ctx, tmp);
 	}
@@ -61,9 +62,7 @@ public class MiniCPrintListener extends MiniCBaseListener {
 			tmp += ctx.getChild(0).getText() + " (" + newTexts.get(ctx.getChild(2)) + ")\n"
 					+ newTexts.get(ctx.getChild(4));
 		} else {
-			tmp += ctx.getChild(0).getText() + " (" + newTexts.get(ctx.getChild(2)) + ")\n"
-					+ newTexts.get(ctx.getChild(4)) + "\n" + ctx.getChild(5).getText() + "\n"
-					+ newTexts.get(ctx.getChild(6));
+
 		}
 		newTexts.put(ctx, tmp);
 	}
@@ -156,13 +155,8 @@ public class MiniCPrintListener extends MiniCBaseListener {
 
 	@Override
 	public void exitLocal_decl(MiniCParser.Local_declContext ctx) {
-		int count = ctx.getChildCount();
 		String tmp = "";
-		if (count == 3) {
-			tmp += newTexts.get(ctx.getChild(0)) + " " + ctx.getChild(1).getText() + ";";
-		} else {
-			tmp += newTexts.get(ctx.getChild(0)) + " " + ctx.getChild(1).getText() + "[];";
-		}
+		tmp += newTexts.get(ctx.getChild(0)) + " " + ctx.getChild(1).getText() + ";";
 		newTexts.put(ctx, tmp);
 	}
 
@@ -183,8 +177,6 @@ public class MiniCPrintListener extends MiniCBaseListener {
 			newTexts.put(ctx, s[0] + " " + s[1]);
 		} else {
 			String tmp = "";
-			tmp += newTexts.get(ctx.getChild(0)) + " " + ctx.getChild(1).getText() + "[]";
-			newTexts.put(ctx, tmp);
 		}
 	}
 
@@ -212,31 +204,12 @@ public class MiniCPrintListener extends MiniCBaseListener {
 			String tmp = "";
 			tmp += ctx.getChild(0).getText() + " (" + newTexts.get(ctx.getChild(2)) + ")";
 			newTexts.put(ctx, tmp);
-		} else if (count == 6) {
-			String tmp = "";
-			tmp += ctx.getChild(0).getText() + "[" + newTexts.get(ctx.getChild(2))+"] = " + newTexts.get(ctx.getChild(5));
-			newTexts.put(ctx, tmp);
-		} else {
-			String tmp = "";
-			tmp += ctx.getChild(0).getText() + " " + newTexts.get(ctx.getChild(2));
-			newTexts.put(ctx, tmp);
 		}
 	}
 
 	@Override
 	public void exitVar_decl(MiniCParser.Var_declContext ctx) {
-		int count = ctx.getChildCount();
-		if (count == 3) {
-			String[] s = new String[2];
-			s[0] = newTexts.get(ctx.getChild(0));
-			s[1] = ctx.getChild(1).getText();
-			// System.out.println(s[0]+" "+s[1]);
-			newTexts.put(ctx, s[0] + " " + s[1]+";");
-		} else {
-			String tmp = "";
-			tmp += newTexts.get(ctx.getChild(0)) + " " + ctx.getChild(1).getText() + "[];";
-			newTexts.put(ctx, tmp);
-		}
+
 	}
 
 	@Override
