@@ -279,13 +279,8 @@ public class MiniCPrintListener extends MiniCBaseListener {
 
 	@Override
 	public void exitReturn_stmt(MiniCParser.Return_stmtContext ctx) {
-		int count = ctx.getChildCount();
 		String tmp = "";
-		if(count == 3){
-			tmp += ctx.getChild(0).getText() + " " + newTexts.get(ctx.getChild(1)) + ";";
-		}else{
-			tmp += ctx.getChild(0).getText() + ";";
-		}
+		tmp += ctx.getChild(0).getText() + " " + newTexts.get(ctx.getChild(1)) + ";";
 		newTexts.put(ctx, tmp);
 	}
 

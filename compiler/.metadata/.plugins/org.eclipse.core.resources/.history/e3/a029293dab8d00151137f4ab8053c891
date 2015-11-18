@@ -15,8 +15,6 @@ public class MiniCPrintListener extends MiniCBaseListener {
 
 	@Override
 	public void exitWhile_stmt(MiniCParser.While_stmtContext ctx) {
-		int depth = ctx.depth();
-		//System.out.println("while : "+depth);
 		String tmp = "";
 		tmp += ctx.getChild(0).getText() + " (" + newTexts.get(ctx.getChild(2)) + ")\n" + newTexts.get(ctx.getChild(4));
 		newTexts.put(ctx, tmp);
@@ -37,7 +35,7 @@ public class MiniCPrintListener extends MiniCBaseListener {
 	@Override
 	public void exitDecl(MiniCParser.DeclContext ctx) {
 		int depth = ctx.depth();
-		//System.out.println("decl : "+depth);
+		System.out.println("decl : "+depth);
 		// System.out.println(newTexts.get(ctx.getChild(0)));
 		newTexts.put(ctx, newTexts.get(ctx.getChild(0)));
 	}
@@ -45,7 +43,7 @@ public class MiniCPrintListener extends MiniCBaseListener {
 	@Override
 	public void exitFun_decl(MiniCParser.Fun_declContext ctx) {
 		int depth = ctx.depth();
-		//System.out.println("func_decl : "+depth);
+		System.out.println("func_decl : "+depth);
 		String[] s = new String[6];
 		s[0] = newTexts.get(ctx.getChild(0));
 		s[1] = ctx.getChild(1).getText();
@@ -61,8 +59,6 @@ public class MiniCPrintListener extends MiniCBaseListener {
 
 	@Override
 	public void exitIf_stmt(MiniCParser.If_stmtContext ctx) {
-		int depth = ctx.depth();
-		//System.out.println("if : "+depth);
 		int count = ctx.getChildCount();
 		String tmp = "";
 		if (count == 5) {
@@ -78,8 +74,6 @@ public class MiniCPrintListener extends MiniCBaseListener {
 
 	@Override
 	public void exitProgram(MiniCParser.ProgramContext ctx) {
-		int depth = ctx.depth();
-		//System.out.println("program : "+depth);
 		int count = ctx.getChildCount();
 		String tmp = "";
 		for (int i = 0; i < count; i++) {
@@ -119,12 +113,11 @@ public class MiniCPrintListener extends MiniCBaseListener {
 	public void exitCompound_stmt(MiniCParser.Compound_stmtContext ctx) {
 		int count = ctx.getChildCount();
 		int depth = ctx.depth();
-		//System.out.println("compound : "+depth);
+		System.out.println("compound : "+depth);
 		String tmp = "";
 		String y = ctx.getParent().getParent().getChild(0).getText();
 		// System.out.println(y);
-		
-		/*
+
 		if (y.equals("while")) {
 			for (int i = 0; i < count; i++) {
 				if (i == 0) {
@@ -154,24 +147,6 @@ public class MiniCPrintListener extends MiniCBaseListener {
 				} else {
 					tmp += "    " + newTexts.get(ctx.getChild(i)) + "\n";
 				}
-			}
-		}*/
-		for (int i = 0; i < count; i++) {
-			if (i == 0) {
-				for(int j=0;j<depth/4-1;j++){
-					tmp+="    ";
-				}
-				tmp += "{\n";
-			} else if (i == count - 1) {
-				for(int j=0;j<depth/4-1;j++){
-					tmp+="    ";
-				}
-				tmp += "}";
-			} else {
-				for(int j=0;j<depth/4;j++){
-					tmp+="    ";
-				}
-				tmp += newTexts.get(ctx.getChild(i)) + "\n";
 			}
 		}
 		newTexts.put(ctx, tmp);
@@ -273,19 +248,14 @@ public class MiniCPrintListener extends MiniCBaseListener {
 	@Override
 	public void exitStmt(MiniCParser.StmtContext ctx) {
 		int depth = ctx.depth();
-		//System.out.println("stmt : "+depth);
+		System.out.println("stmt : "+depth);
 		newTexts.put(ctx, newTexts.get(ctx.getChild(0)));
 	}
 
 	@Override
 	public void exitReturn_stmt(MiniCParser.Return_stmtContext ctx) {
-		int count = ctx.getChildCount();
 		String tmp = "";
-		if(count == 3){
-			tmp += ctx.getChild(0).getText() + " " + newTexts.get(ctx.getChild(1)) + ";";
-		}else{
-			tmp += ctx.getChild(0).getText() + ";";
-		}
+		tmp += ctx.getChild(0).getText() + " " + newTexts.get(ctx.getChild(1)) + ";";
 		newTexts.put(ctx, tmp);
 	}
 
